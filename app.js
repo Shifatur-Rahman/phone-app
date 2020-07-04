@@ -53,6 +53,9 @@ class UI {
     document.querySelector("#phone").value = "";
     document.querySelector("#birth").value = "";
   }
+
+  //show alert
+  showAlert(msg, alertType) {}
 }
 
 // Local storage
@@ -92,6 +95,41 @@ class store {
     localStorage.setItem("contacts", JSON.stringify(contacts));
   }
 }
+
+//store
+// class store {
+//   //getStore
+//   static getStore() {
+//     var get;
+//     if (localStorage.getItem("get") == null) {
+//       get = [];
+//     } else {
+//       get = JSON.parse(localStorage.getItem("get"));
+//     }
+//     return get;
+//   }
+
+//   // display store
+//   static displayStore() {
+//     var display = store.getStore();
+//     display.forEach((getDisplay) => {
+//       var ui = new UI();
+//       ui.addToContact(getDisplay);
+//     });
+//   }
+
+//   // add store
+//   static addStore(value) {
+//     var add = store.getStore();
+//     add.push(value);
+//     localStorage.setItem("add", JSON.stringify(add));
+//   }
+
+//   // remove store
+//   static removeStore(phone) {
+//     var remove = store.removeStore();
+//   }
+// }
 
 //   All Events
 
