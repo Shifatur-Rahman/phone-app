@@ -1,6 +1,6 @@
-//oop
-// contact constructor
+//OOP apply
 
+// contact constructor
 class Contact {
   constructor(name, email, phone, birthday) {
     this.name = name;
@@ -34,9 +34,16 @@ class UI {
     }
   }
 
-  // search
+  // search  => tableList > tr > td
   searchContact(filter) {
-    
+    document.querySelectorAll(".tableList tr").forEach((row) => {
+      var rowName = row.children[0].textContent;
+      if (rowName.indexOf(filter) != -1) {
+        row.style.display = "table-row";
+      } else {
+        row.style.display = "none";
+      }
+    });
   }
 
   // clear
@@ -45,6 +52,44 @@ class UI {
     document.querySelector("#email").value = "";
     document.querySelector("#phone").value = "";
     document.querySelector("#birth").value = "";
+  }
+}
+
+// Local storage
+class store {
+  // get store
+  static getContact() {
+    var contact;
+    if (localStorage.getItem("contacts") == null) {
+      contact = [];
+    } else {
+      contact = JSON.parse(localStorage.getItem("contacts"));
+    }
+    return contact;
+  }
+  // display store
+  static displayContact() {
+    var display = store.getContact();
+    display.forEach((displayValue) => {
+      var ui = new UI();
+      ui.addToContact(displayValue);
+    });
+  }
+  // add store
+  static addContact(getValue) {
+    var contacts = store.getContact();
+    contacts.push(getValue);
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }
+  // remove store
+  static removeStore(phone) {
+    const contacts = store.getContact();
+    contacts.forEach((contact, index) => {
+      if (contact.phone == phone) {
+        contacts.splice(index, 1);
+      }
+    });
+    localStorage.setItem("contacts", JSON.stringify(contacts));
   }
 }
 
@@ -62,6 +107,7 @@ document.querySelector(".form-input").addEventListener("submit", function (e) {
     console.log("Error");
   } else {
     var ui = new UI();
+    store.addContact(contact);
     ui.addToContact(contact);
     ui.clearContact();
   }
@@ -71,6 +117,9 @@ document.querySelector(".form-input").addEventListener("submit", function (e) {
 document.querySelector(".tableList").addEventListener("click", function (e) {
   var ui = new UI();
   ui.deleteToContact(e.target);
+  store.removeStore(
+    e.target.parentElement.parentElement.children[2].textContent
+  );
 });
 
 // search
@@ -78,3 +127,6 @@ document.querySelector("#search").addEventListener("keyup", function (e) {
   var ui = new UI();
   ui.searchContact(e.target.value);
 });
+
+// local storage load
+document.addEventListener("DOMContentLoaded", store.displayContact());
