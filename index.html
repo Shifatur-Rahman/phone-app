@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Phone App</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="container center-align offset-m2 offset-l2 offset-s2">
+      <div class="row">
+        <div class="col s12">
+          <div class="card">
+            <span class="card-title mt-2">New Contact</span>
+            <div class="card-content">
+              <div class="row">
+                <form class="form-input">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="name" type="text" class="validate" />
+                    <label for="name">Full name</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="email" class="validate" />
+                    <label for="email">Email</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="phone" type="number" class="validate" />
+                    <label for="phone">phone</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">access_time</i>
+                    <input id="birth" type="number" class="validate" />
+                    <label for="birth">BirthDate</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <button type="submit" id="submit" class="btn teal">
+                      ADD NEW contact
+                      <i class="material-icons right">add</i>
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            <div class="card-action">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">search</i>
+                <input id="search" type="text" class="validate" />
+                <label for="search">Search By name</label>
+              </div>
+
+              <table>
+                <thead>
+                  <tr class="teal lighten-2">
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Birthday</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody class="tableList"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
