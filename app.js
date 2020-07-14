@@ -1,5 +1,4 @@
 //OOP apply
-
 // contact constructor
 class Contact {
   constructor(name, email, phone, birthday) {
@@ -17,6 +16,7 @@ class UI {
   addToContact(contact) {
     var table = document.querySelector(".tableList");
     var row = document.createElement("tr");
+
     row.innerHTML = `
     <td>${contact.name}</td>
     <td>${contact.email}</td>
@@ -31,7 +31,14 @@ class UI {
   deleteToContact(cut) {
     if (cut.classList.contains("delete")) {
       if (confirm("Are you Sure")) {
-        cut.parentElement.parentElement.remove();
+        const progress = document.querySelector(".progress");
+        progress.style.display = "block";
+        setTimeout(function () {
+          progress.style.display = "none";
+          var ui = new UI();
+          ui.showAlert("Contact deleted", "warning");
+          cut.parentElement.parentElement.remove();
+        }, 1000);
       }
     }
   }
@@ -59,6 +66,14 @@ class UI {
   //show alert
   showAlert(msg, alertType) {
     const div = document.createElement("div");
+    div.className = `alert alert-${alertType}`;
+    div.appendChild(document.createTextNode(msg));
+    const card = document.querySelector(".card");
+    const cardAction = document.querySelector(".card-action");
+    card.insertBefore(div, cardAction);
+    setTimeout(function () {
+      document.querySelector(".alert").remove();
+    }, 2000);
   }
 }
 
@@ -110,12 +125,23 @@ document.querySelector(".form-input").addEventListener("submit", function (e) {
   var phone = document.querySelector("#phone").value;
   var birthday = document.querySelector("#birth").value;
   var contact = new Contact(name, email, phone, birthday);
+  var ui = new UI();
+  const progress = document.querySelector(".progress");
   if (name == "" || email == "" || phone == "" || birthday == "") {
-    console.log("Error");
+    progress.style.display = "block";
+    setTimeout(function () {
+      progress.style.display = "none";
+      ui.showAlert("Please Enter the values", "danger");
+    }, 1000);
   } else {
-    var ui = new UI();
-    store.addContact(contact);
-    ui.addToContact(contact);
+    progress.style.display = "block";
+    setTimeout(function () {
+      progress.style.display = "none";
+      ui.showAlert("Contact Added", "success");
+      store.addContact(contact);
+      ui.addToContact(contact);
+    }, 1000);
+
     ui.clearContact();
   }
 });
