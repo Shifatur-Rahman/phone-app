@@ -51,29 +51,29 @@ UI.prototype.clear = function () {
 };
 
 //store
-function getContact() {
-  var temp;
-  if (localStorage.getItem("data") == null) {
-    temp = [];
-  } else {
-    temp = JSON.parse(localStorage.getItem("data"));
-  }
-  return temp;
-}
+// function getContact() {
+//   var temp;
+//   if (localStorage.getItem("data") == null) {
+//     temp = [];
+//   } else {
+//     temp = JSON.parse(localStorage.getItem("data"));
+//   }
+//   return temp;
+// }
 
-function displayContact() {
-  const data = getContact();
-  data.forEach((temp) => {
-    const ui = new UI();
-    ui.add(temp);
-  });
-}
+// function displayContact() {
+//   const data = getContact();
+//   data.forEach((temp) => {
+//     const ui = new UI();
+//     ui.add(temp);
+//   });
+// }
 
-function addContact(temp) {
-  const data = getContact();
-  data.push(temp);
-  localStorage.setItem("data", JSON.stringify(data));
-}
+// function addContact(temp) {
+//   const data = getContact();
+//   data.push(temp);
+//   localStorage.setItem("data", JSON.stringify(data));
+// }
 
 //   Events
 //add
@@ -91,7 +91,6 @@ document.querySelector(".form-input").addEventListener("submit", function (e) {
   if (name == "" || email == "" || phone == "" || birth == "") {
     console.log("Error");
   } else {
-    
     ui.add(contact);
     ui.clear();
   }

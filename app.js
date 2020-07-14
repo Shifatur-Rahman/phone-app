@@ -57,7 +57,9 @@ class UI {
   }
 
   //show alert
-  showAlert(msg, alertType) {}
+  showAlert(msg, alertType) {
+    const div = document.createElement("div");
+  }
 }
 
 // Local storage
