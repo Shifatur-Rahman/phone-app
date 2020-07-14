@@ -12,6 +12,8 @@ class Contact {
 //    prototype class
 class UI {
   //add
+
+  // method & parameter
   addToContact(contact) {
     var table = document.querySelector(".tableList");
     var row = document.createElement("tr");
@@ -133,3 +135,8 @@ document.querySelector("#search").addEventListener("keyup", function (e) {
 
 // local storage load
 document.addEventListener("DOMContentLoaded", store.displayContact());
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll(".datepicker");
+  M.Datepicker.init(elems);
+});
